@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Tesseract, { createWorker } from "tesseract.js";
+import { createWorker } from "tesseract.js";
 
 function App() {
   const [textOcr, setText] = useState("");
@@ -9,7 +9,6 @@ function App() {
     try {
       console.log("###start");
       setLoading(true);
-      const { createWorker } = require("tesseract.js");
 
       const worker = createWorker();
       await worker.load();
