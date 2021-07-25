@@ -1,4 +1,2 @@
 [build]
-  base = "build/"
-  command = "npm install && npm run build"
   ignore = "git diff --quiet master src/"
