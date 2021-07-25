@@ -7,7 +7,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const hadnlequickstart = async (path: string) => {
     try {
-      console.log("###start");
       setLoading(true);
 
       const worker = createWorker();
@@ -17,7 +16,6 @@ function App() {
       const {
         data: { text },
       } = await worker.recognize(path);
-      console.log("####terminate: ", text);
       setText(() => {
         setLoading(false);
         return text;
@@ -29,7 +27,6 @@ function App() {
       setLoading(false);
     }
   };
-  console.log("###loading:", loading);
   return (
     <div className="App">
       <header className="App-header">
