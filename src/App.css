@@ -37,3 +37,33 @@
     transform: translateY(0px);
   }
 }
+
+textarea {
+  max-width: 100%;
+  width: 500px;
+  height: 400px;
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-img {
+  max-height: 150px;
+
+}
+
+button {
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border-radius: 1px solid #f2f2f2;
+}
+
+.loading {
+  margin: 0;
+  height: 0;
+}
