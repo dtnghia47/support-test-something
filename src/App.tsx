@@ -40,8 +40,9 @@ function App() {
           <a
             href="https://i.imgur.com/s5dvxXD.jpeg"
             target="_blank"
+            rel="noreferrer"
           >
-            <img src="https://i.imgur.com/s5dvxXD.jpeg" className="text-img" />
+            <img src="https://i.imgur.com/s5dvxXD.jpeg" className="text-img" alt="img" />
           </a>
           <button
             onClick={() => hadnlequickstart("https://i.imgur.com/s5dvxXD.jpeg")}
@@ -56,8 +57,9 @@ function App() {
           <a
             href="/assets/demo.png"
             target="_blank"
+            rel="noreferrer"
           >
-            <img src="/assets/demo.png" className="text-img" />
+            <img src="/assets/demo.png" className="text-img" alt="img" />
           </a>
           <button
             onClick={() => hadnlequickstart("/assets/demo.png")}
