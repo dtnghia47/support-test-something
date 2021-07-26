@@ -13,6 +13,8 @@ const fileToDataUri = (file:any) => new Promise((resolve, reject) => {
 function App() {
   const [textOcr, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [lang, setLanguage] = useState('eng+vie');
+
   const handleUploadImage = (event: any) => {
     fileToDataUri(event.target.files[0])
       .then((dataUri: any) => {
@@ -23,13 +25,13 @@ function App() {
   const hadnlequickstart = async (path: string) => {
     try {
       setLoading(true);
-
       const worker = createWorker({
         workerBlobURL: true,
       });
+      
       await worker.load();
-      await worker.loadLanguage("eng");
-      await worker.initialize("eng");
+      await worker.loadLanguage(lang);
+      await worker.initialize(lang);
       const {
         data: { text },
       } = await worker.recognize(path);
@@ -44,27 +46,16 @@ function App() {
       setLoading(false);
     }
   };
+
+  const onChangeLang = (e: any) => {
+    setLanguage(e.target.value);
+    // window.location.href = `/${e.target.value}`;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <div
-          className="row"
-          style={{ marginTop: "50px", marginBottom: "50px" }}
-        >
-          <a
-            href="https://i.imgur.com/s5dvxXD.jpeg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src="https://i.imgur.com/s5dvxXD.jpeg" className="text-img" alt="img" />
-          </a>
-          <button
-            onClick={() => hadnlequickstart("https://i.imgur.com/s5dvxXD.jpeg")}
-          >
-            check external image
-          </button>
-        </div>
-        <div
+        {/* <div
           className="row"
           style={{ marginBottom: "50px" }}
         >
@@ -80,16 +71,24 @@ function App() {
           >
             check local image
           </button>
-        </div>
+        </div> */}
+        <div style={{ marginBottom: "20px" }}>Select language</div>
+        <select onChange={onChangeLang} defaultValue={lang}>
+          <option value="eng">English</option>
+          <option value="vie">Vietnamese</option>
+          <option value="eng+vie">All</option>
+        </select>
         <input
+          style={{ marginTop: "50px" }}
           accept="image/*"
           onChange={handleUploadImage}
           id="contained-button-file"
           multiple
           type="file"
         />
+        <div></div>
         {loading && <h2 className="loading">Loading .......!!</h2>}
-        <textarea value={textOcr}></textarea>
+        <textarea defaultValue={textOcr} onChange={(e) => setText(e.target.value)}></textarea>
       </header>
     </div>
   );
